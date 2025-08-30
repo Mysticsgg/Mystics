@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mystics</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&display=swap" rel="stylesheet" />
+<style>
+  /* cores */
+  :root {
+  --roxo: #6c00ff;
+  --amarelo: #ffde59;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+  body {
+    font-family: 'Orbitron', sans-serif;
+    color: white; /* misturando var com valor direto */
+    background: url('https://i.imgur.com/jRdvOaH.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+  header {
+  /* removi o sticky pq nao gostei e deixei estatico*/
+  background: rgba(10,10,10,0.8);
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+}
+  header img {
+    height: 60px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  header img:hover {
+    transform: scale(1.1);
+  }
+  nav a {
+    color: var(--amarelo);
+    font-weight: 700;
+    margin-left: 30px;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0%;
+    height: 3px;
+    background: var(--amarelo);
+    transition: width 0.3s ease;
+    border-radius: 2px;
+  }
+  nav a:hover,
+  nav a:focus {
+    color: white;
+  }
+  nav a:hover::after,
+  nav a:focus::after {
+    width: 100%;
+  }
+  .hero {
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: black; /* usei cor direto, sem variável */
+    opacity: 0.65;
+    z-index: 0;
+  }
+  .hero h1 {
+    position: relative;
+    font-size: 4.5rem;
+    max-width: 900px;
+    color: #A020F0; /* roxo fixo */
+    text-shadow: 0 0 20px #ffde59; /* cor direto */
+  }
+  section {
+    max-width: 1100px;
+    margin: 80px auto;
+    padding: 0 20px;
+    background: rgba(255, 55, 5, 0.1);
+    border: 1px solid rgba(235, 235, 235, 0.2);
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+    color: white; /* misturei variável com valor direto de novo */
+  }
+  section h2 {
+    font-size: 2.8rem;
+    color: var(--amarelo);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  section p {
+    font-size: 1.15rem;
+    max-width: 900px;
+    margin: 0 auto 30px auto;
+    line-height: 1.6;
+  }
+  /* formulário, só porque eu queria */
+  .form-section {
+    max-width: 600px;
+    margin: 0 auto 60px
+  }
+  .btn-mystics {
+    background: #ffde59;
+    color: #000;
+    font-weight: 800;
+    font-size: 1.2rem;
+    padding: 16px 30px;
+    border-radius: 14px;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 0 20px #ffde59;
+    transition: all 0.3s ease;
+    margin-bottom: 30px;
+  }
+  .btn-mystics:hover {
+    background: #fff;
+    color: #000;
+    transform: scale(1.07);
+  }
+  /* botão estranho aqui, inline style + classe */
+  .btn-email {
+    background: white !important;
+    color: black !important;
+    box-shadow: 0 0 35px red !important;
+  }
+  footer {
+    background: rgba(10, 10, 10, 0.8);
+    text-align: center;
+    padding: 25px 10px;
+    font-size: 0.95rem;
+    color: #ccc;
+    box-shadow: inset 0 1px 5px #fff2;
+  }
+
+  /* Guri está lendo isso... */
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      gap: 15px;
+      padding: 15px 20px;
+    }
+    nav a {
+      margin-left: 0;
+      font-size: 1rem;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      padding: 0 1px;
+    }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <img src="https://i.imgur.com/hVoQMsg.png" alt="Logo da Mystics" />
+  </header>
+  <!-- conteúdo -->
+</section>
+    <section id="ENTRE" class="form-section">
+  <h2>Entre para a Mystics</h2>
+  <p>
+    Estamos em busca de jogadores dedicados, 
+    criadores de conteúdo e talentos em ascensão que queiram fazer parte da nossa revolução nos eSports.
+  </p>
+  <p style="text-align: center; font-size: 1.1rem; font-weight: bold; color: var(--amarelo); margin-bottom: 30px;">
+    Preencha o formulário e junte-se à elite da Mystics! 💜👑
+  </p>
+
+  <!-- Formulário do Formspree -->
+<form action="https://formspree.io/f/xpwlkdnn" method="POST" enctype="multipart/form-data" style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;">
+  
+  <label for="email">Seu email:</label>
+  <input id="email" type="email" name="email" required>
+
+  <label style="display: flex; flex-direction: column; font-weight: 600; font-size: 1rem; color: white;">
+    Seu id no jogo:
+    <textarea name="id" required rows="1" style="padding: 10px; border-radius: 8px; border: none; font-size: 1rem; resize: vertical;"></textarea>
+  </label>
+
+  <label style="display: flex; flex-direction: column; font-weight: 600; font-size: 1rem; color: white;">
+    Quantidade de troféus:
+    <input type="number" name="trofeus" required style="padding: 10px; border-radius: 8px; border: none; font-size: 1rem;">
+  </label>
+
+  <label style="display: flex; flex-direction: column; font-weight: 600; font-size: 1rem; color: white;">
+    Por que você quer entrar para a Mystics?
+    <textarea name="motivo" required rows="3" style="padding: 10px; border-radius: 8px; border: none; font-size: 1rem; resize: vertical;"></textarea>
+  </label>
+  <button type="submit" class="btn-mystics" style="align-self: center; padding: 17px 45px; font-weight: 700;">
+    Enviar
+  </button>
+
+</form>
+
+  <p style="margin-top: 40px; text-align: center;">
+    Após preencher o formulario, aguarde o email oficial: <strong>esports.mystics.gg@gmail.com</strong>
+  </p>
+  </body>
+</html>
+
