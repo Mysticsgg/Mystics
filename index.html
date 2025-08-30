@@ -1,223 +1,662 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Mystics</title>
+<meta name="description" content="Torneio oficial de Brawl Stars da Mystics GG - Inscreva seu time agora!">
+<title>Torneio Brawl Stars | Mystics GG</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&display=swap" rel="stylesheet" />
 <style>
-  /* cores */
-  :root {
+:root {
   --roxo: #6c00ff;
   --amarelo: #ffde59;
+  --roxo-claro: rgba(108, 0, 255, 0.2);
+  --preto-transparente: rgba(10, 10, 10, 0.8);
 }
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Orbitron', sans-serif;
+  color:white;
+  background: url('https://i.imgur.com/jRdvOaH.jpeg') no-repeat center center fixed;
+  background-size: cover;
+  overflow-x:hidden;
+  scroll-behavior: smooth;
+  text-align:center;
+  line-height:1.6;
 }
-  body {
-    font-family: 'Orbitron', sans-serif;
-    color: white; /* misturando var com valor direto */
-    background: url('https://i.imgur.com/jRdvOaH.jpeg') no-repeat center center fixed;
-    background-size: cover;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-  }
-  header {
-  /* removi o sticky pq nao gostei e deixei estatico*/
-  background: rgba(10,10,10,0.8);
-  padding: 10px 15px;
+header {
+  background: var(--preto-transparente);
+  padding: 10px 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   backdrop-filter: blur(8px);
-  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
-  header img {
-    height: 60px;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-  }
-  header img:hover {
-    transform: scale(1.1);
-  }
-  nav a {
-    color: var(--amarelo);
-    font-weight: 700;
-    margin-left: 30px;
-    text-decoration: none;
-    position: relative;
-    transition: color 0.3s ease;
-  }
-  nav a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    width: 0%;
-    height: 3px;
-    background: var(--amarelo);
-    transition: width 0.3s ease;
-    border-radius: 2px;
-  }
-  nav a:hover,
-  nav a:focus {
-    color: white;
-  }
-  nav a:hover::after,
-  nav a:focus::after {
-    width: 100%;
-  }
-  .hero {
-    height: 60vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 0 20px;
-    position: relative;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: black; /* usei cor direto, sem variável */
-    opacity: 0.65;
-    z-index: 0;
-  }
-  .hero h1 {
-    position: relative;
-    font-size: 4.5rem;
-    max-width: 900px;
-    color: #A020F0; /* roxo fixo */
-    text-shadow: 0 0 20px #ffde59; /* cor direto */
-  }
-  section {
-    max-width: 1100px;
-    margin: 80px auto;
-    padding: 0 20px;
-    background: rgba(255, 55, 5, 0.1);
-    border: 1px solid rgba(235, 235, 235, 0.2);
-    border-radius: 20px;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
-    color: white; /* misturei variável com valor direto de novo */
-  }
-  section h2 {
-    font-size: 2.8rem;
-    color: var(--amarelo);
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  section p {
-    font-size: 1.15rem;
-    max-width: 900px;
-    margin: 0 auto 30px auto;
-    line-height: 1.6;
-  }
-  /* formulário, só porque eu queria */
-  .form-section {
-    max-width: 600px;
-    margin: 0 auto 60px
-  }
-  .btn-mystics {
-    background: #ffde59;
-    color: #000;
-    font-weight: 800;
-    font-size: 1.2rem;
-    padding: 16px 30px;
-    border-radius: 14px;
-    text-decoration: none;
-    display: inline-block;
-    box-shadow: 0 0 20px #ffde59;
-    transition: all 0.3s ease;
-    margin-bottom: 30px;
-  }
-  .btn-mystics:hover {
-    background: #fff;
-    color: #000;
-    transform: scale(1.07);
-  }
-  /* botão estranho aqui, inline style + classe */
-  .btn-email {
-    background: white !important;
-    color: black !important;
-    box-shadow: 0 0 35px red !important;
-  }
-  footer {
-    background: rgba(10, 10, 10, 0.8);
-    text-align: center;
-    padding: 25px 10px;
-    font-size: 0.95rem;
-    color: #ccc;
-    box-shadow: inset 0 1px 5px #fff2;
-  }
+header img { height:100px; transition: transform 0.3s ease; cursor:pointer; }
+header img:hover { transform: scale(1.1); }
+.hero {
+  height:20vh; min-height:150px;
+  display:flex; align-items:center; justify-content:center;
+  position:relative;
+  background: linear-gradient(135deg, var(--roxo-claro), rgba(0,0,0,0.7));
+}
+.hero::before {
+  content: '';
+  position:absolute;
+  inset:0;
+  background:black;
+  opacity:0.55;
+  z-index:-1;
+}
+.hero h1 {
+  position: relative;
+  font-size:3.5rem;
+  color: var(--roxo);
+  text-shadow:0 0 20px var(--amarelo);
+  animation: fadeIn 1.5s ease-out;
+  padding:0 20px;
+}
+  
+section {
+  max-width:700px;
+  margin:50px auto;
+  padding:30px;
+  background: rgba(30,30,50,0.7);
+  border-radius:20px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 25px rgba(0,0,0,0.8);
+  animation: fadeUp 1s ease forwards;
+  opacity:0;
+  border:1px solid var(--roxo);
+}
+section:nth-child(odd) { background: rgba(20,20,40,0.7); }
+section h2 {
+  font-size:2.2rem;
+  color: var(--amarelo);
+  margin-bottom:25px;
+  text-shadow:0 0 10px rgba(255,222,89,0.5);
+}
+section p, section li { font-size:1.1rem; line-height:1.6em; margin-bottom:15px; }
+ul { list-style:none; padding:0; margin:0 auto 20px auto; text-align:left; max-width:500px; }
+ul li {
+  margin-bottom:12px;
+  position:relative;
+  padding-left:25px;
+}
+ul li:before {
+  content:'•';
+  color: var(--amarelo);
+  font-size:1.5em;
+  position:absolute;
+  left:0;
+  top:-2px;
+}
+.form-section {
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  max-width:500px;
+  margin:0 auto;
+  text-align:center;
+}
+input, textarea {
+  padding:14px;
+  border-radius:10px;
+  border:2px solid var(--roxo);
+  font-size:1rem;
+  text-align:center;
+  background: rgba(255,255,255,0.9);
+  transition: all 0.3s ease;
+  width:100%;
+}
+input:focus, textarea:focus {
+  outline:none;
+  border-color: var(--amarelo);
+  box-shadow:0 0 10px var(--amarelo);
+  transform: scale(1.02);
+}
+textarea { text-align:left; min-height:120px; resize:vertical; }
+button, .btn-mystics {
+  background: var(--amarelo);
+  color:black;
+  font-weight:800;
+  font-size:1.1rem;
+  padding:16px 30px;
+  border-radius:12px;
+  border:none;
+  text-decoration:none;
+  display:inline-block;
+  margin-top:15px;
+  box-shadow:0 0 20px var(--amarelo);
+  transition: all 0.3s ease;
+  cursor:pointer;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+button:hover, .btn-mystics:hover {
+  transform: scale(1.07);
+  background:#fff;
+  box-shadow:0 0 30px var(--amarelo);
+}
+footer {
+  background: var(--preto-transparente);
+  text-align:center;
+  padding:25px;
+  color:#ccc;
+  margin-top:50px;
+  font-size:0.95rem;
+  backdrop-filter: blur(8px);
+}
+@keyframes fadeIn { from { opacity:0; transform:scale(0.95); } to { opacity:1; transform:scale(1); } }
+@keyframes fadeUp { from { opacity:0; transform:translateY(30px);} to { opacity:1; transform:translateY(0);} }
 
-  /* Guri está lendo isso... */
-  @media (max-width: 768px) {
-    header {
-      flex-direction: column;
-      gap: 15px;
-      padding: 15px 20px;
-    }
-    nav a {
-      margin-left: 0;
-      font-size: 1rem;
-    }
-    .hero h1 {
-      font-size: 2.8rem;
-      padding: 0 1px;
-    }
-  }
+/* Adicionando animação shake */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+#erroValidacao, #erroTermos, #erro {
+  background: rgba(255, 77, 77, 0.2);
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 20px;
+  color: white;
+  text-align: center;
+  border: 2px solid #ff4d4d;
+}
+
+#mensagem {
+  background: rgba(108, 0, 255, 0.2);
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 20px;
+  color: white;
+  text-align: center;
+  border: 2px solid #6c00ff;
+}
+
+@media(max-width:768px){
+  .hero h1 { font-size:2.2rem; padding:0 15px; }
+  section { margin:30px 15px; padding:20px; }
+  section h2 { font-size:1.8rem; margin-bottom:15px; }
+  input, textarea { padding:12px; }
+  button, .btn-mystics { padding:14px 25px; }
+}
+@media(max-width:480px){
+  .hero h1 { font-size:1.8rem; }
+  header img { height:80px; }
+}
 </style>
 </head>
 <body>
-  <header>
-    <img src="https://i.imgur.com/hVoQMsg.png" alt="Logo da Mystics" />
-  </header>
-  <!-- conteúdo -->
+
+<header>
+  <img src="https://i.imgur.com/hVoQMsg.png" alt="Logo Mystics GG" />
+</header>
+
+<div class="hero">
+  <h1>TORNEIO BRAWL STARS</h1>
+</div>
+
+<section style="animation-delay: 0.2s;">
+  <h2>Sobre o Torneio</h2>
+  <p>Participe do torneio oficial da <strong>Mystics</strong>! São <strong>32 times</strong> de 3 jogadores. Valor da inscrição: <strong>R$10 por time</strong>.</p>
+  <ul>
+    <li><strong>Formato:</strong> 3x3, melhor de 5 mapas</li>
+    <li><strong>Regras:</strong> Sem contas alternativas ou trapaças</li>
+  </ul>
 </section>
-    <section id="ENTRE" class="form-section">
-  <h2>Entre para a Mystics</h2>
-  <p>
-    Estamos em busca de jogadores dedicados, 
-    criadores de conteúdo e talentos em ascensão que queiram fazer parte da nossa revolução nos eSports.
-  </p>
-  <p style="text-align: center; font-size: 1.1rem; font-weight: bold; color: var(--amarelo); margin-bottom: 30px;">
-    Preencha o formulário e junte-se à elite da Mystics! 💜👑
-  </p>
-
-  <!-- Formulário do Formspree -->
-<form action="https://formspree.io/f/xpwlkdnn" method="POST" enctype="multipart/form-data" style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;">
+  <section style="animation-delay: 0.8s;">
+  <h2>Chaveamento do Torneio</h2>
+  <p>Acompanhe aqui o progresso do torneio em tempo real! Atualizaremos esta imagem após cada partida.</p>
   
-  <label for="email">Seu email:</label>
-  <input id="email" type="email" name="email" required>
+  <div style="text-align: center; margin: 20px 0;">
+    <img id="bracket-image" src="bracket.png"  style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+    <p style="margin-top: 10px; font-size: 0.9em; color: #ccc;">
+      Atualizado pela última vez em: <span id="hora-atualizacao">--/--/---- --:--</span>
+    </p>
+  </div>
+  
+  <div style="text-align: center; margin-top: 20px;">
+    <button onclick="atualizarBracket()" class="btn-mystics" style="padding: 10px 20px;">
+      🔄 Atualizar Bracket
+    </button>
+  </div>
+</section>
 
-  <label style="display: flex; flex-direction: column; font-weight: 600; font-size: 1rem; color: white;">
-    Seu id no jogo:
-    <textarea name="id" required rows="1" style="padding: 10px; border-radius: 8px; border: none; font-size: 1rem; resize: vertical;"></textarea>
-  </label>
+<script>
+// Atualiza a data/hora da última atualização
+document.getElementById('hora-atualizacao').textContent = new Date().toLocaleString('pt-BR');
 
-  <label style="display: flex; flex-direction: column; font-weight: 600; font-size: 1rem; color: white;">
-    Quantidade de troféus:
-    <input type="number" name="trofeus" required style="padding: 10px; border-radius: 8px; border: none; font-size: 1rem;">
-  </label>
+// Função para atualizar o bracket (evita cache)
+function atualizarBracket() {
+  const img = document.getElementById('bracket-image');
+  const timestamp = new Date().getTime();
+  
+  // Adiciona timestamp para evitar cache
+  img.src = img.src.split('?')[0] + '?t=' + timestamp;
+  
+  // Atualiza o horário
+  document.getElementById('hora-atualizacao').textContent = new Date().toLocaleString('pt-BR');
+  
+  // Feedback visual
+  const btn = document.querySelector('button[onclick="atualizarBracket()"]');
+  btn.textContent = '✅ Atualizado!';
+  setTimeout(() => {
+    btn.textContent = '🔄 Atualizar Bracket';
+  }, 2000);
+}
+</script>
 
-  <label style="display: flex; flex-direction: column; font-weight: 600; font-size: 1rem; color: white;">
-    Por que você quer entrar para a Mystics?
-    <textarea name="motivo" required rows="3" style="padding: 10px; border-radius: 8px; border: none; font-size: 1rem; resize: vertical;"></textarea>
-  </label>
-  <button type="submit" class="btn-mystics" style="align-self: center; padding: 17px 45px; font-weight: 700;">
-    Enviar
-  </button>
+<section style="animation-delay: 0.4s;">
+  <h2>Inscrição</h2>
+  <p>Preencha os dados do seu time e faça o pagamento via PIX para confirmar sua participação:</p>
+  
+  <form id="meuFormulario" class="form-section">
+    <input type="text" name="time" placeholder="Nome do Time (ex: Os Melhores)" required>
+    <input type="text" name="jogador1" placeholder="Nick no Brawl Stars - Jogador 1" required>
+    <input type="text" name="jogador2" placeholder="Nick no Brawl Stars - Jogador 2" required>
+    <input type="text" name="jogador3" placeholder="Nick no Brawl Stars - Jogador 3" required>
+    <input type="text" name="contato" placeholder="WhatsApp/Discord (ex: 11 99999-9999)" required>
+    <input type="text" name="pagador" placeholder="Nome completo do pagador" required>
 
-</form>
+    <label style="display: flex; justify-content: center; color: white; font-weight: bold; margin: 15px auto; max-width: 320px; align-items: center; white-space: nowrap; font-size: 14px;">
+      <input type="checkbox" name="aceito_termos" required 
+             style="width: 16px; height: 16px; margin-right: 6px;">
+      <span>
+        Li e aceito os 
+        <a href="https://snazzy-cupcake-2ef43e.netlify.app/" target="_blank" 
+           style="color: var(--roxo); text-decoration: underline;">
+          termos e condições
+        </a>
+      </span>
+    </label>
 
-  <p style="margin-top: 40px; text-align: center;">
-    Após preencher o formulario, aguarde o email oficial: <strong>esports.mystics.gg@gmail.com</strong>
-  </p>
-  </body>
+    <!-- Botão PIX -->
+    <div style="text-align: center; margin: 20px 0;">
+      <span style="
+  color:orange;
+  font-size:20px;
+  font-weight:bold;
+">
+  PAGAR R$10,00
+</span>
+<a href="https://checkout.infinitepay.io/cascavelas?items=[{%22name%22:%22Torneio%22,%22price%22:100,%22quantity%22:1}]&redirect_url=https://torneiogg.netlify.app/"
+   target="_blank"
+   style="
+       position: relative;
+       display: inline-flex;
+       align-items: center;
+       justify-content: center;
+       background-color: #F5F5F5;
+       color: black;
+       padding: 12px 25px;
+       border-radius: 12px;
+       text-decoration: none;
+       font-weight: bold;
+       font-family: Arial, sans-serif;
+       overflow: hidden;
+       transition: background-color 0.3s, transform 0.2s;
+   "
+   onmouseover="this.style.backgroundColor='#2E2E2E'; this.style.transform='scale(1.05)';"
+   onmouseout="this.style.backgroundColor='white'; this.style.transform='scale(1)';"
+   onmousedown="this.style.transform='scale(0.95)';"
+   onmouseup="this.style.transform='scale(1.05)';"
+>
+   <img src="https://www.bcb.gov.br/content/estabilidadefinanceira/piximg/logo_pix.png" 
+        alt="PIX" 
+        style="width: 150px; height: 50px; display: inline-block; vertical-align: middle;"> 
+
+   <!-- Efeito de brilho -->
+   <span style="
+       content: '';
+       position: absolute;
+       top: 0;
+       left: -100%;
+       width: 50%;
+       height: 100%;
+       background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
+       animation: shine 4s infinite;
+   "></span>
+</a>
+
+<style>
+@keyframes shine {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+</style>
+      
+<script>
+  const input = document.getElementById('fileInput');
+  const preview = document.getElementById('preview');
+
+  input.addEventListener('change', function() {
+    preview.innerHTML = ''; // Limpa previews anteriores
+    const file = this.files[0];
+    if (!file) return;
+
+    const nameEl = document.createElement('p');
+    nameEl.textContent = file.name;
+    preview.appendChild(nameEl);
+
+    if (file.type.startsWith('image/')) {
+      const img = document.createElement('img');
+      img.src = URL.createObjectURL(file);
+      img.style.width = '200px';
+      img.style.height = 'auto';
+      img.style.borderRadius = '12px';
+      img.style.boxShadow = '0 4px 10px rgba(0,0,0,0.3)';
+      preview.appendChild(img);
+    } else if (file.type === 'application/pdf') {
+      const pdfIcon = document.createElement('div');
+      pdfIcon.textContent = '📄 PDF selecionado';
+      pdfIcon.style.fontSize = '18px';
+      pdfIcon.style.fontWeight = 'bold';
+      preview.appendChild(pdfIcon);
+    }
+  });
+</script>
+    
+    <!-- BOTÃO DE CONFIRMAR INSCRIÇÃO -->
+    <button type="button" id="btnEnviar" class="btn-mystics">
+      CONFIRMAR INSCRIÇÃO
+    </button>
+  </form>
+
+  <!-- Indicadores visuais -->
+  <div id="autoSaveIndicator" style="display: none; text-align: center; margin-top: 10px; font-size: 12px; color: var(--amarelo);">
+    ⚡ Dados salvos automaticamente
+  </div>
+
+  <div id="erroValidacao" style="display: none;">
+    <p>❌ Por favor, preencha todos os campos obrigatórios.</p>
+  </div>
+
+  <div id="erroTermos" style="display: none;">
+    <p>❌ Você precisa aceitar os termos e condições.</p>
+  </div>
+
+  <div id="mensagem" style="display: none;">
+    <p>✅ Inscrição enviada com sucesso! Verifique seu email.</p>
+  </div>
+
+  <div id="erro" style="display: none;">
+    <p>❌ Erro ao enviar. Entre em contato: esports.mystics.gg@gmail.com</p>
+  </div>
+
+  <div id="carregando" style="display: none; text-align: center; margin-top: 20px;">
+    <div style="color: var(--amarelo); font-size: 18px;">⏳ Enviando...</div>
+  </div>
+</section>
+
+<section style="animation-delay: 0.6s;">
+  <h2>Premiação</h2>
+  <ul>
+    <li>1º lugar: R$ 100 + Medalha pro time</li>
+    <li>2º lugar: R$ 30</li>
+    <li>3º lugar: R$ 10</li>
+  </ul>
+</section>
+
+<section style="animation-delay: 0.8s;">
+  <h2>Suporte Rápido</h2>
+  <p>Envie sua dúvida diretamente por aqui mesmo:</p>
+  
+  <form id="formSuporte" class="form-section" style="max-width: 500px; margin: 30px auto;">
+    <input type="text" id="nomeSuporte" placeholder="Seu nome" required>
+    <textarea id="mensagemSuporte" placeholder="Sua mensagem ou dúvida..." rows="4" required></textarea>
+    
+    <button type="button" id="btnEnviarSuporte" class="btn-mystics" style="margin-top: 15px;">
+      📩 Enviar Mensagem
+    </button>
+  </form>
+
+  <div id="suporteMensagem" style="display: none; background: rgba(108, 0, 255, 0.2); padding: 15px; border-radius: 10px; margin-top: 20px; color: white; text-align: center;">
+    <p>✅ Mensagem enviada! Retornaremos em breve.</p>
+  </div>
+
+  <div id="suporteErro" style="display: none; background: rgba(255, 0, 0, 0.2); padding: 15px; border-radius: 10px; margin-top: 20px; color: white; text-align: center;">
+    <p>❌ Erro ao enviar. Tente novamente.</p>
+  </div>
+
+  <div id="suporteCarregando" style="display: none; text-align: center; margin-top: 20px;">
+    <div style="color: var(--amarelo); font-size: 18px;">⏳ Enviando...</div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Mystics GG. Todos os direitos reservados.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
+<script>
+  // Inicialize o EmailJS
+  emailjs.init("Bc-MTArRNNVINkJVn");
+  
+  // Sistema de Auto-Save Automático
+  const form = document.getElementById('meuFormulario');
+  const inputs = form.querySelectorAll('input[type="text"]');
+  const checkbox = form.querySelector('input[type="checkbox"]');
+  const autoSaveIndicator = document.getElementById('autoSaveIndicator');
+  const erroValidacao = document.getElementById('erroValidacao');
+  const erroTermos = document.getElementById('erroTermos');
+  
+  // Carregar dados salvos quando a página carrega
+  document.addEventListener('DOMContentLoaded', function() {
+    const savedData = localStorage.getItem('mystics_inscricao');
+    if (savedData) {
+      const data = JSON.parse(savedData);
+      
+      inputs.forEach(input => {
+        if (data[input.name]) {
+          input.value = data[input.name];
+        }
+      });
+      
+      if (data.aceito_termos) {
+        checkbox.checked = true;
+      }
+      
+      autoSaveIndicator.style.display = 'block';
+      setTimeout(() => {
+        autoSaveIndicator.style.display = 'none';
+      }, 2000);
+    }
+  });
+  
+  // Salvar dados sempre que um campo for alterado
+  function salvarDados() {
+    const dataToSave = {};
+    
+    inputs.forEach(input => {
+      dataToSave[input.name] = input.value;
+    });
+    
+    dataToSave.aceito_termos = checkbox.checked;
+    localStorage.setItem('mystics_inscricao', JSON.stringify(dataToSave));
+    
+    autoSaveIndicator.style.display = 'block';
+    setTimeout(() => {
+      autoSaveIndicator.style.display = 'none';
+    }, 1500);
+  }
+  
+  // Adicionar event listeners para salvar automaticamente
+  inputs.forEach(input => {
+    input.addEventListener('input', salvarDados);
+    input.addEventListener('change', salvarDados);
+  });
+  
+  checkbox.addEventListener('change', salvarDados);
+  
+  // Envio do formulário principal
+  document.getElementById('btnEnviar').addEventListener('click', function() {
+    // Esconder todas as mensagens primeiro
+    document.querySelectorAll('#erroValidacao, #erroTermos, #mensagem, #erro, #carregando').forEach(el => {
+      el.style.display = 'none';
+    });
+    
+    // Validar se todos os campos estão preenchidos
+    let todosPreenchidos = true;
+    
+    inputs.forEach(input => {
+      if (!input.value.trim()) {
+        todosPreenchidos = false;
+        input.style.borderColor = 'red';
+        input.style.animation = 'shake 0.5s ease';
+      } else {
+        input.style.borderColor = '';
+        input.style.animation = '';
+      }
+    });
+    
+    if (!todosPreenchidos) {
+      erroValidacao.style.display = 'block';
+      setTimeout(() => {
+        erroValidacao.style.display = 'none';
+      }, 5000);
+      return;
+    }
+    
+    // Validar termos
+    if (!checkbox.checked) {
+      erroTermos.style.display = 'block';
+      checkbox.style.animation = 'shake 0.5s ease';
+      setTimeout(() => {
+        erroTermos.style.display = 'none';
+        checkbox.style.animation = '';
+      }, 5000);
+      return;
+    }
+    
+    // Mostrar loading
+    document.getElementById('carregando').style.display = 'block';
+    
+    // Coletar dados do formulário
+    const dados = {
+      time: form.time.value,
+      jogador1: form.jogador1.value,
+      jogador2: form.jogador2.value,
+      jogador3: form.jogador3.value,
+      contato: form.contato.value,
+      pagador: form.pagador.value,
+      to_email: 'esports.mystics.gg@gmail.com',
+      from_name: form.pagador.value,
+      reply_to: form.contato.value.includes('@') ? form.contato.value : 'esports.mystics.gg@gmail.com'
+    };
+    
+    // Enviar via EmailJS
+    emailjs.send('service_77z9fpb', 'template_bxx7vvq', dados)
+      .then(function(response) {
+        document.getElementById('carregando').style.display = 'none';
+        document.getElementById('mensagem').style.display = 'block';
+        
+        localStorage.removeItem('mystics_inscricao');
+        form.reset();
+        
+        setTimeout(function() {
+          document.getElementById('mensagem').style.display = 'none';
+        }, 5000);
+      })
+      .catch(function(error) {
+        document.getElementById('carregando').style.display = 'none';
+        document.getElementById('erro').style.display = 'block';
+        
+        // Fallback: Envio por mailto tradicional
+        const subject = 'Inscrição Torneio Brawl Stars - Time: ' + encodeURIComponent(dados.time);
+        const body = 
+          'Time: ' + encodeURIComponent(dados.time) + '%0D%0A' +
+          'Jogador 1: ' + encodeURIComponent(dados.jogador1) + '%0D%0A' +
+          'Jogador 2: ' + encodeURIComponent(dados.jogador2) + '%0D%0A' +
+          'Jogador 3: ' + encodeURIComponent(dados.jogador3) + '%0D%0A' +
+          'Contato: ' + encodeURIComponent(dados.contato) + '%0D%0A' +
+          'Pagador: ' + encodeURIComponent(dados.pagador);
+        
+        setTimeout(() => {
+          window.location.href = 'mailto:esports.mystics.gg@gmail.com?subject=' + subject + '&body=' + body;
+        }, 2000);
+      });
+  });
+  
+  // Formulário de Suporte
+  document.getElementById('btnEnviarSuporte').addEventListener('click', function() {
+    const nomeInput = document.getElementById('nomeSuporte');
+    const mensagemInput = document.getElementById('mensagemSuporte');
+    
+    // Validar campos
+    let todosPreenchidos = true;
+    
+    if (!nomeInput.value.trim()) {
+      todosPreenchidos = false;
+      nomeInput.style.borderColor = 'red';
+      nomeInput.style.animation = 'shake 0.5s ease';
+    } else {
+      nomeInput.style.borderColor = '';
+    }
+    
+    if (!mensagemInput.value.trim()) {
+      todosPreenchidos = false;
+      mensagemInput.style.borderColor = 'red';
+      mensagemInput.style.animation = 'shake 0.5s ease';
+    } else {
+      mensagemInput.style.borderColor = '';
+    }
+    
+    if (!todosPreenchidos) {
+      setTimeout(() => {
+        nomeInput.style.animation = '';
+        mensagemInput.style.animation = '';
+      }, 500);
+      return;
+    }
+    
+    // Mostrar loading
+    document.getElementById('suporteCarregando').style.display = 'block';
+    document.getElementById('suporteMensagem').style.display = 'none';
+    document.getElementById('suporteErro').style.display = 'none';
+    
+    // Dados para enviar
+    const dadosSuporte = {
+      nome: nomeInput.value,
+      mensagem: mensagemInput.value,
+      data_envio: new Date().toLocaleString('pt-BR'),
+      assunto: 'Suporte - Torneio Brawl Stars'
+    };
+    
+    // Enviar via EmailJS
+    emailjs.send('service_77z9fpb', 'template_u3v2qb2', dadosSuporte)
+      .then(function(response) {
+        document.getElementById('suporteCarregando').style.display = 'none';
+        document.getElementById('suporteMensagem').style.display = 'block';
+        
+        nomeInput.value = '';
+        mensagemInput.value = '';
+        
+        setTimeout(() => {
+          document.getElementById('suporteMensagem').style.display = 'none';
+        }, 5000);
+      })
+      .catch(function(error) {
+        // Fallback para email tradicional
+        const subject = 'Suporte - Torneio Brawl Stars';
+        const body = `Nome: ${dadosSuporte.nome}\nMensagem: ${dadosSuporte.mensagem}\nData: ${dadosSuporte.data_envio}`;
+        
+        window.location.href = `mailto:esports.mystics.gg@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        
+        document.getElementById('suporteCarregando').style.display = 'none';
+        document.getElementById('suporteMensagem').style.display = 'block';
+        
+        setTimeout(() => {
+          document.getElementById('suporteMensagem').style.display = 'none';
+        }, 3000);
+      });
+  });
+</script>
+
+</body>
 </html>
-
